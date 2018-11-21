@@ -1,17 +1,20 @@
 import React from 'react';
 import Square from './Square';
+import EditSquare from './EditSquare';
 
 class Board extends React.Component{
     renderSquare (index, i) {
         return (
-          <Square 
-                 handleClick={()=>this.props.handleClick(index, i)}
-                 isInEditMode={this.props.isInEditMode}
-                 setEditMode={this.props.setEditMode}
-                 squares={this.props.squares}
-                 />
+          <EditSquare>{(clickItem)=><Square 
+                handleClick={()=>this.props.handleClick(index, i)}
+                squares={this.props.squares}
+                boardIndex={this.props.boardIndex} 
+                squareIndex={this.props.squareIndex}
+                clickItem={clickItem}
+            />}</EditSquare>
         )
-      }
+    }
+
     render(){
         const index = this.props.index;
         return(

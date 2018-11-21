@@ -7,7 +7,6 @@ import Numbers from './Numbers';
 class Game extends Component {
     
     state={
-        isInEditMode: false,
         squares: [
             [Array(9).fill(null)],
             [Array(9).fill(null)],
@@ -25,34 +24,38 @@ class Game extends Component {
         squareIndex:""
     }
 
-    setEditMode = () => {
-        this.setState({
-            isInEditMode: !this.state.isInEditMode
-        })
-    };
-
     onListItemClick = (e) => {
         console.log(e.currentTarget.textContent);
-        const squareIndex = this.state.squareIndex;
-        const boardIndex = this.state.boardIndex;
-        
+        const squareIndex = parseInt(this.state.squareIndex,10);
+        const boardIndex = parseInt(this.state.boardIndex, 10);
+
+        // console.log('boardIndex');
+        // console.log(boardIndex);
+        // console.log('squareIndex');
+        // console.log(squareIndex);
+
         const itemClicked = e.currentTarget.textContent;
         const squares = this.state.squares.slice();
-        console.log(squares[boardIndex][squareIndex]);
+        // console.log("array")
+        // console.log(squares[boardIndex][squareIndex]);
         squares[boardIndex][squareIndex] = itemClicked;
 
         this.setState({
             itemClicked: itemClicked,
             isInEditMode: !this.state.isInEditMode,
-            squares: squares.concat([])
+            squares: squares
         })
+        //console.log(squares);
     }
     
-    handleClick(index, i) {
+    handleClick=(index, i)=> {
         //const squares = this.state.squares.slice();
         const boardIndex = parseInt(index-1, 10);
         const squareIndex = parseInt(i, 10);
-
+        // console.log('boardIndex');
+        // console.log(boardIndex);
+        // console.log('squareIndex');
+        // console.log(squareIndex);
         this.setState({
             boardIndex: boardIndex,
             squareIndex: squareIndex
@@ -66,8 +69,14 @@ class Game extends Component {
             <div className="header">            
             </div>
             <div className="container">
-                <FullBoard isInEditMode={this.state.isInEditMode} setEditMode={this.setEditMode} handleClick={(index, i)=>this.handleClick(index,i)} numbers={this.state.numbers} squares={this.state.squares}/>
-                {this.state.isInEditMode?<Numbers numbers={this.state.numbers} onListItemClick={(e)=>this.onListItemClick(e)}/>:null}
+                <FullBoard  
+                    handleClick={(index, i)=>this.handleClick(index,i)} 
+                    numbers={this.state.numbers} 
+                    squares={this.state.squares} 
+                    boardIndex={this.state.boardIndex} 
+                    squareIndex={this.state.squareIndex}
+                />
+                <Numbers numbers={this.state.numbers} onListItemClick={(e)=>this.onListItemClick(e)}/>
             </div>
         </div>
         );

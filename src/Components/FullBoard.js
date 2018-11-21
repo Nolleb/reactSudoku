@@ -10,7 +10,14 @@ class FullBoard extends React.Component{
         return(
             <div className="full-board">
                 {numbers.map(nb=>
-                    <Board key={nb} index={nb} isInEditMode={this.props.isInEditMode} setEditMode={this.props.setEditMode} handleClick={this.props.handleClick} squares={this.props.squares}>
+                    <Board 
+                        key={nb} 
+                        index={nb} 
+                        handleClick={this.props.handleClick} 
+                        squares={this.props.squares}
+                        boardIndex={this.props.boardIndex} 
+                        squareIndex={this.props.squareIndex}
+                    >
                     </Board>
                 )}
             </div>

@@ -15,4 +15,9 @@
         transform: scale(1.1);
         box-shadow: 0px 0px 8px $color-menu-3;
     }
+    &.active {
+        transform: scale(1.1);
+        box-shadow: 0px 0px 8px $color-menu-3;
+        background: $color-menu-5;
+    }
 }

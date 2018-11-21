@@ -2,13 +2,16 @@ import React from 'react';
 
 function Square (props){
     const squares = props.squares;
+    const boardID = props.boardIndex;
+    const squareID = props.squareIndex;
+    // console.log('boardID');
+    // console.log(boardID);
+    // console.log('squareID');
+    // console.log(squareID);
+
         return(
-            <div className="square" onClick={()=>{props.setEditMode(); props.handleClick()}}>
-               {squares.map((item, index)=>{
-                   <span key={index}>
-                        {item.squares.map(subitem=>subitem.value)}
-                   </span>
-               })}
+            <div className="square" onClick={(e)=>{props.handleClick(), props.clickItem(e)}}>
+                
             </div>
         );
 }
