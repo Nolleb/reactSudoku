@@ -127,6 +127,9 @@ body {
 .u-margin-bottom-big {
   margin-bottom: 8rem !important; }
 
+.u-margin-right-small {
+  margin-right: 1.5rem; }
+
 .u-margin-top-big {
   margin-top: 8rem !important; }
 
@@ -153,6 +156,9 @@ body {
 
 .u-shadow {
   box-shadow: rgba(0, 0, 0, 0.05) 0px 10px 20px, rgba(0, 0, 0, 0.2) 0px 0px 1px; }
+
+.u-uppercase {
+  text-transform: uppercase; }
 
 .btn {
   background-color: #EE161F;
@@ -247,7 +253,8 @@ body {
   padding: 2rem;
   display: flex;
   justify-content: center;
-  position: relative; }
+  position: relative;
+  padding-top: 0; }
   .container__numbers {
     position: absolute;
     top: 100%;
@@ -256,3 +263,8 @@ body {
     width: 100%;
     height: 100px;
     padding: 10px; }
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column; }

@@ -11,7 +11,7 @@
 .u-margin-bottom-big { 
     margin-bottom: 8rem !important;
 }
-
+.u-margin-right-small{margin-right: 1.5rem;}
 .u-margin-top-big { margin-top: 8rem !important; }
 .u-margin-top-huge { margin-top: 10rem !important; }
 
@@ -39,4 +39,8 @@
 
 .u-shadow {
     box-shadow: rgba(0, 0, 0, 0.05) 0px 10px 20px, rgba(0, 0, 0, 0.2) 0px 0px 1px;
+}
+
+.u-uppercase {
+    text-transform: uppercase;
 }

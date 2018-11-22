@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../CSS/App.css';
 import FullBoard from './FullBoard';
 import Numbers from './Numbers';
-
+import Header from './Header';
 
 class Game extends Component {
     
@@ -70,8 +70,7 @@ class Game extends Component {
         
         return (
         <div className="wrapper">
-            <div className="header">            
-            </div>
+            <Header />
             <div className="container">
                 <FullBoard  
                     handleClick={(index, i)=>this.handleClick(index,i)} 
