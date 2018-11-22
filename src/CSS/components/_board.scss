@@ -1,5 +1,6 @@
 .full-board-row, .board {
     display: flex;
+    flex-direction: column;
 }
 
 .full-board  {
@@ -8,4 +9,8 @@
     grid-auto-columns: 120px;
     grid-gap: 2px;
     background: $color-black;
+}
+
+.board-row {
+    display: flex;
 }

@@ -4,7 +4,7 @@ class EditSquare extends React.Component {
     clickItem = (e) => {
         const squares = document.querySelectorAll('.square');
         const squaresArray = Array.from(squares);
-
+        
         if(e.currentTarget.classList.contains('active')){
             e.currentTarget.classList.remove('active');
         }else{
@@ -12,6 +12,7 @@ class EditSquare extends React.Component {
             e.currentTarget.classList.add('active');
         }
     };
+  
     render(){
         return(
             <Fragment>

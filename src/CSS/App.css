@@ -194,7 +194,8 @@ body {
   transform: translateY(0); }
 
 .full-board-row, .board {
-  display: flex; }
+  display: flex;
+  flex-direction: column; }
 
 .full-board {
   display: grid;
@@ -202,6 +203,9 @@ body {
   grid-auto-columns: 120px;
   grid-gap: 2px;
   background: #000; }
+
+.board-row {
+  display: flex; }
 
 .square {
   background: #fff;

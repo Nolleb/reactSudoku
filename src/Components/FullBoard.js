@@ -15,8 +15,6 @@ class FullBoard extends React.Component{
                         index={nb} 
                         handleClick={this.props.handleClick} 
                         squares={this.props.squares}
-                        boardIndex={this.props.boardIndex} 
-                        squareIndex={this.props.squareIndex}
                     >
                     </Board>
                 )}

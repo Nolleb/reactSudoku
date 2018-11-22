@@ -8,15 +8,15 @@ class Game extends Component {
     
     state={
         squares: [
-            [Array(9).fill(null)],
-            [Array(9).fill(null)],
-            [Array(9).fill(null)],
-            [Array(9).fill(null)],
-            [Array(9).fill(null)],
-            [Array(9).fill(null)],
-            [Array(9).fill(null)],
-            [Array(9).fill(null)],
-            [Array(9).fill(null)]
+            Array(9).fill(null),
+            Array(9).fill(null),
+            Array(9).fill(null),
+            Array(9).fill(null),
+            Array(9).fill(null),
+            Array(9).fill(null),
+            Array(9).fill(null),
+            Array(9).fill(null),
+            Array(9).fill(null)
         ],
         numbers: [1,2,3,4,5,6,7,8,9],
         itemClicked:"",
@@ -25,41 +25,45 @@ class Game extends Component {
     }
 
     onListItemClick = (e) => {
-        console.log(e.currentTarget.textContent);
+        
         const squareIndex = parseInt(this.state.squareIndex,10);
         const boardIndex = parseInt(this.state.boardIndex, 10);
 
-        // console.log('boardIndex');
-        // console.log(boardIndex);
-        // console.log('squareIndex');
-        // console.log(squareIndex);
-
-        const itemClicked = e.currentTarget.textContent;
+        const sq = document.querySelectorAll('.square');
+        const squaresArray = Array.from(sq);
+   
+        const itemClicked = parseInt(e.currentTarget.textContent, 10);
         const squares = this.state.squares.slice();
-        // console.log("array")
-        // console.log(squares[boardIndex][squareIndex]);
-        squares[boardIndex][squareIndex] = itemClicked;
+
+        squaresArray.map(el=>{
+            if(el.classList.contains('active')){
+                squares[boardIndex][squareIndex] = itemClicked;
+            }
+            return itemClicked;
+        })
 
         this.setState({
             itemClicked: itemClicked,
-            isInEditMode: !this.state.isInEditMode,
             squares: squares
         })
-        //console.log(squares);
+        this.removeActiveFromSquare();
     }
     
     handleClick=(index, i)=> {
-        //const squares = this.state.squares.slice();
+
         const boardIndex = parseInt(index-1, 10);
         const squareIndex = parseInt(i, 10);
-        // console.log('boardIndex');
-        // console.log(boardIndex);
-        // console.log('squareIndex');
-        // console.log(squareIndex);
+
         this.setState({
             boardIndex: boardIndex,
             squareIndex: squareIndex
         })
+    }
+
+    removeActiveFromSquare = () => {
+        const squares = document.querySelectorAll('.square');
+        const squaresArray = Array.from(squares);
+        squaresArray.map(el=>el.classList.remove('active'));
     }
 
     render() {
@@ -73,8 +77,7 @@ class Game extends Component {
                     handleClick={(index, i)=>this.handleClick(index,i)} 
                     numbers={this.state.numbers} 
                     squares={this.state.squares} 
-                    boardIndex={this.state.boardIndex} 
-                    squareIndex={this.state.squareIndex}
+                    itemClicked={this.state.itemClicked}
                 />
                 <Numbers numbers={this.state.numbers} onListItemClick={(e)=>this.onListItemClick(e)}/>
             </div>

@@ -4,13 +4,12 @@ import EditSquare from './EditSquare';
 
 class Board extends React.Component{
     renderSquare (index, i) {
+     
         return (
           <EditSquare>{(clickItem)=><Square 
-                handleClick={()=>this.props.handleClick(index, i)}
-                squares={this.props.squares}
-                boardIndex={this.props.boardIndex} 
-                squareIndex={this.props.squareIndex}
-                clickItem={clickItem}
+                handleClick={()=>this.props.handleClick(index, i)}                
+                value={this.props.squares[index-1][i]}
+                clickItem={clickItem}         
             />}</EditSquare>
         )
     }
