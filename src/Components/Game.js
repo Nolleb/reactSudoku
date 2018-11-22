@@ -19,7 +19,6 @@ class Game extends Component {
             Array(9).fill(null),
             Array(9).fill(null)
         ],
-        sudokus:"",
         numbers: [1,2,3,4,5,6,7,8,9],
         itemClicked:"",
         boardIndex:"",
