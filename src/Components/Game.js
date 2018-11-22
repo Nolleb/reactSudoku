@@ -3,6 +3,7 @@ import '../CSS/App.css';
 import FullBoard from './FullBoard';
 import Numbers from './Numbers';
 import Header from './Header';
+import sudokus from '../sudokus';
 
 class Game extends Component {
     
@@ -18,10 +19,22 @@ class Game extends Component {
             Array(9).fill(null),
             Array(9).fill(null)
         ],
+        sudokus:"",
         numbers: [1,2,3,4,5,6,7,8,9],
         itemClicked:"",
         boardIndex:"",
         squareIndex:""
+    }
+    getRandomSudokuName = (sudokus) => {
+        const randomNb = Math.floor(Math.random() * Object.keys(sudokus).length) + 1;
+        const randomSudokuName = "sudoku" + randomNb;
+        return randomSudokuName;
+    }
+    loadNewGame = () => {
+        const randomSudoku = this.getRandomSudokuName(sudokus);
+        this.setState({
+            squares: sudokus[randomSudoku]
+        })
     }
 
     onListItemClick = (e) => {
@@ -70,7 +83,7 @@ class Game extends Component {
         
         return (
         <div className="wrapper">
-            <Header />
+            <Header loadNewGame={this.loadNewGame}/>
             <div className="container">
                 <FullBoard  
                     handleClick={(index, i)=>this.handleClick(index,i)} 
