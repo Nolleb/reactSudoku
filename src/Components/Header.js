@@ -7,7 +7,7 @@ class Header extends React.Component{
                 <h1 className="heading-primary u-uppercase u-margin-bottom-medium">Sudoku</h1>
                 <div className="header__control">
                     <button className="btn u-margin-right-small" onClick={this.props.loadNewGame}>New sudoku</button>
-                    <button className="btn">Reset sudoku</button>                
+                    <button className="btn" onClick={this.props.resetGame}>Reset sudoku</button>                
                 </div>
             </div>
         );

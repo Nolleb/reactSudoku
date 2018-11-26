@@ -232,6 +232,10 @@ body {
     transform: scale(1.1);
     box-shadow: 0px 0px 8px #8c9184;
     background: #1ce; }
+  .square.not-allowed {
+    pointer-events: none;
+    color: #404b69;
+    background: #f1f1f0; }
 
 .numbers__list {
   display: flex;

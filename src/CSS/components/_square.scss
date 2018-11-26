@@ -20,4 +20,9 @@
         box-shadow: 0px 0px 8px $color-menu-3;
         background: $color-menu-5;
     }
+    &.not-allowed {
+        pointer-events: none;
+        color: $color-dark-1;
+        background: lighten($color-menu-3, 40%);
+    }
 }
