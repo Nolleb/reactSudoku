@@ -237,6 +237,10 @@ body {
     color: #404b69;
     background: #f1f1f0; }
 
+.error {
+  background: #f1464d;
+  color: #fff; }
+
 .numbers__list {
   display: flex;
   justify-content: center;

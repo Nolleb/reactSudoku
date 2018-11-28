@@ -22,7 +22,8 @@ class Game extends Component {
         numbers: [1,2,3,4,5,6,7,8,9],
         itemClicked:"",
         boardIndex:"",
-        squareIndex:""
+        squareIndex:"",
+        sudokuIndex:""
     }
 
     componentDidMount = () => {
@@ -50,16 +51,17 @@ class Game extends Component {
 
     }
 
-
-
     getRandomSudokuName = (sudokus) => {
         const randomNb = Math.floor(Math.random() * Object.keys(sudokus).length) + 1;
         const randomSudokuName = "sudoku" + randomNb;
+        this.setState({
+            sudokuIndex: randomSudokuName
+        })
         return randomSudokuName;
     }
 
     loadNewGame = () => {
-        console.log('new game');
+
         const randomSudoku = this.getRandomSudokuName(sudokus);
         const squares = this.getAllSquares();
 
@@ -74,7 +76,7 @@ class Game extends Component {
             const squaresNotAllowed = squares.filter(el=>{
                 return el.hasChildNodes()
             })
-            squares.map(el=>el.classList.remove('not-allowed'));
+            squares.map(el=>el.classList.remove('not-allowed', 'error'));
             squaresNotAllowed.map(el=>{
             el.classList.add('not-allowed');
             return el;
@@ -83,9 +85,15 @@ class Game extends Component {
     }
 
     resetGame = () => {
-        console.log('reset');
         const squares = this.getAllSquares();
-        squares.filter(el=>(!el.classList.contains('not-allowed')? el.innerHTML = null:el));
+        const sudokuIndex = this.state.sudokuIndex;
+        const newArray = sudokus[sudokuIndex].map(function(arr) {
+            return arr.slice();
+        });
+        squares.map(el=>el.classList.remove('error'));
+        this.setState({
+            squares: newArray
+        })
     }
 
     onListItemClick = (e) => {
@@ -95,8 +103,6 @@ class Game extends Component {
 
         const squaresArray = this.getAllSquares();
         const splitArray = this.getSquaresIntoArray();
-        console.log(splitArray);
-        console.log(squaresArray);
 
         const itemClicked = parseInt(e.currentTarget.textContent, 10);
         const squares = this.state.squares.slice(); 
@@ -107,16 +113,26 @@ class Game extends Component {
             }
             return itemClicked;
         });
+        
+        splitArray[boardIndex].map((el, index)=>{
+       
+            if(index !== squareIndex && squares[boardIndex][index] === itemClicked){
+                console.log('match');
+                splitArray[boardIndex][squareIndex].classList.add('error');
+            }  
+            return itemClicked;
+        });
 
         this.setState({
             itemClicked: itemClicked,
             squares: squares
-        })
+        });
         this.removeActiveFromSquare();
     }
     
     handleClick=(index, i)=> {
-
+        const squares = this.getAllSquares();
+        squares.map(el=>el.classList.remove('error'));
         const boardIndex = parseInt(index-1, 10);
         const squareIndex = parseInt(i, 10);
 

@@ -7,7 +7,7 @@ class Board extends React.Component{
      
         return (
           <EditSquare>{(clickItem)=><Square 
-                handleClick={()=>this.props.handleClick(index, i)}                 
+                handleClick={()=>this.props.handleClick(index, i)}                
                 value={this.props.squares[index-1][i]}
                 clickItem={clickItem}         
             />}</EditSquare>

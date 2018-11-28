@@ -26,3 +26,8 @@
         background: lighten($color-menu-3, 40%);
     }
 }
+
+.error {
+    background: lighten($color-warning, 10%);
+    color: $color-white;
+}
